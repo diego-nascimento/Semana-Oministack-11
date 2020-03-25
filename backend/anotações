@@ -1,0 +1,16 @@
+yarn add knex
+npx knex init
+
+
+criar migration
+npx knex migrate:make nomedamigration
+
+
+executar migration
+npx knex migrate:latest
+
+despazer migration
+npx knex migrate:rollback
+
+listar migration
+npx knex migrate:status
