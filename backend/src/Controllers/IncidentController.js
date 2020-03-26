@@ -19,9 +19,9 @@ module.exports = {
     const {page = 1} = req.query
     const [count] = await Connection('incidents')
     .count()
-
+    
     const incidents = await Connection('incidents')
-    .join('ongs', 'ong_id', '=', 'incidents.ong_id')
+    .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
     .limit(5)
     .offset((page-1) *5)
     .select([
@@ -29,7 +29,8 @@ module.exports = {
       'ongs.name', 
       'ongs.email', 
       'ongs.whatsapp', 
-      'ongs.uf'
+      'ongs.uf',
+      'ongs.city'
     ])
     res.header('X-Total-Count', count['count(*)'])
 
