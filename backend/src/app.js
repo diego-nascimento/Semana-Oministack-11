@@ -1,6 +1,8 @@
 const express = require('express')
 const routes = require('./routes')
 const cors = require('cors')
+const {errors} = require('celebrate')
+
 class server {
   constructor(){
     this.server = express()
@@ -11,10 +13,12 @@ class server {
   midwares(){
     this.server.use(express.json())
     this.server.use(cors())
+    
   }
 
   routes(){
     this.server.use(routes)
+    this.server.use(errors())
   }
 }
 
